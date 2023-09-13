@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block content %}
+    <h1>Home template</h1>
+  
+    
+    <div class="home-container">
+
+      <div>
+        <h3>Browse Topics</h3>
+      </div>
+      <a href="{% url 'create-room'%}">Create Room</a>
+      <div>
+        {%for room in rooms%}
+          <div>
+            <a href="{%url 'update-room' room.id%}">Edit</a>
+            <a href="{%url 'delete-room' room.id%}">Delete</a>
+            <span>@{{room.host.username}}</span>z
+     <h5>{{room.id}}--<a href="room/{{room.id}}">{{room.title}}</a></h5>
+     <small>{{room.user}}</small>
+     <hr>
+          </div>
+        {%endfor%}
+      </div>
+    </div>
+{% endblock content %}
