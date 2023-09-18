@@ -29,7 +29,7 @@
 
       </div>
       <div class="activities__boxContent">
-        <p>replied to post “<a href="{%url 'room' message.room.id%}">{{message.room}}</a>”</p>
+        <p>replied to post “<a href="#">{{message.room}}</a>”</p>
         <div class="activities__boxRoomContent">
         {{message.body}}
         </div>
@@ -39,13 +39,3 @@
    
   </div>
 
-
-{% for message in room_messages%}
-<p>@{{message.user}} {{message.created|timesince}}</p>
-<small>replied to "{{message.room}}"</small>
-<p>{{message.body}}</p>
-{% if request.user == message.user %}
-<a href="{% url 'delete-message' message.id%}">Delete</a>
-{% endif %}
-<hr>
-{% endfor %}

@@ -38,14 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    
+      'rest_framework',
+       "corsheaders",
     'base.apps.BaseConfig'
+ 
 ]
+
+AUTH_USER_MODEL='base.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -125,6 +130,10 @@ USE_TZ = True
 # settings.py
 
 STATIC_URL = '/static/'
+MEDIA_URL= '/images/'
+
+MEDIA_ROOT= BASE_DIR / 'static/images'
+
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
@@ -133,3 +142,5 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'home'
+
+CORS_ALLOW_ALL_ORIGINS=True
